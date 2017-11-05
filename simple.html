@@ -1,0 +1,15 @@
+<html><head><title>WebAssembly Simple Sample</title>
+<script>
+
+fetch("./simple.wasm").then(function(response) {
+    return response.arrayBuffer();
+}).then(function(bytes) {
+    return WebAssembly.compile(bytes);
+}).then(function(module) {
+    return WebAssembly.instantiate(module);
+}).then(function(instance) {
+    console.log(instance.exports.add(7, 4));
+});
+
+</script>
+</head><body></body></html>
